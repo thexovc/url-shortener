@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Shortener } from './entities/shortener.entity';
-import { nanoid } from 'nanoid';
 
 @Injectable()
 export class ShortenerService {
@@ -22,7 +21,7 @@ export class ShortenerService {
       return existingUrl.shortUrl;
     }
 
-    const shortUrl = nanoid(7);
+    const shortUrl = await this.randomShortUrl(9);
     const newUrl = this.shortenerRepository.create({ orignalUrl, shortUrl });
     await this.shortenerRepository.save(newUrl);
 
@@ -37,5 +36,19 @@ export class ShortenerService {
     }
 
     return url.orignalUrl;
+  }
+
+  // generate Short URL
+  async randomShortUrl(length: number): Promise<string> {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+
+    return result;
   }
 }
