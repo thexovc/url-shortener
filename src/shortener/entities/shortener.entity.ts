@@ -6,7 +6,7 @@ export class Shortener {
   id: number;
 
   @Column()
-  orignalUrl: string;
+  originalUrl: string;
 
   @Column()
   shortUrl: string;

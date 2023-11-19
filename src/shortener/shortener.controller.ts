@@ -16,7 +16,7 @@ export class ShortenerController {
 
   @Get(':shortUrl')
   async getOriginalUrl(@Param('shortUrl') shortUrl: string) {
-    const originalUrl = await this.shortenerService.getOrignalUrl(shortUrl);
+    const originalUrl = await this.shortenerService.getOriginalUrl(shortUrl);
     return { url: originalUrl || '/', statusCode: 302 };
   }
 }

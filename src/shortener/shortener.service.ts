@@ -10,10 +10,10 @@ export class ShortenerService {
     private readonly shortenerRepository: Repository<Shortener>,
   ) {}
 
-  async shortenUrl(orignalUrl: string): Promise<string> {
+  async shortenUrl(originalUrl: string): Promise<string> {
     const existingUrl = await this.shortenerRepository.findOne({
       where: {
-        orignalUrl,
+        originalUrl,
       },
     });
 
@@ -22,20 +22,20 @@ export class ShortenerService {
     }
 
     const shortUrl = await this.randomShortUrl(9);
-    const newUrl = this.shortenerRepository.create({ orignalUrl, shortUrl });
+    const newUrl = this.shortenerRepository.create({ originalUrl, shortUrl });
     await this.shortenerRepository.save(newUrl);
 
     return newUrl.shortUrl;
   }
 
-  async getOrignalUrl(shortUrl: string): Promise<string> {
+  async getOriginalUrl(shortUrl: string): Promise<string> {
     const url = await this.shortenerRepository.findOne({ where: { shortUrl } });
 
     if (!url) {
       throw new NotFoundException();
     }
 
-    return url.orignalUrl;
+    return url.originalUrl;
   }
 
   // generate Short URL
