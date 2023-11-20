@@ -6,7 +6,6 @@ A powerful and extensible URL shortener built with Nest.js.
 
 - **Shorten URLs:** Create shortened URLs for easy sharing.
 - **Redirects:** Seamless redirection to the original URL.
-- **Customizable:** Personalize short URLs with your preferred length.
 - **Efficient Storage:** Backed by a PostgreSQL database.
 - **Open Source:** Ready for contributions!
 
