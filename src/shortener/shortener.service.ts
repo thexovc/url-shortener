@@ -11,6 +11,10 @@ export class ShortenerService {
   ) {}
 
   async shortenUrl(originalUrl: string): Promise<string> {
+    if (!originalUrl) {
+      throw new Error('Original URL is required');
+    }
+
     const existingUrl = await this.shortenerRepository.findOne({
       where: {
         originalUrl,

@@ -20,7 +20,7 @@ import { ShortenerModule } from './shortener/shortener.module';
     }),
     ShortenerModule,
   ],
-  controllers: [AppController, ShortenerController],
-  providers: [AppService, ShortenerService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
