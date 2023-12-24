@@ -2,7 +2,7 @@ import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { ShortenerService } from './shortener.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 
-@Controller('shortener')
+@Controller('api/shortener')
 export class ShortenerController {
   constructor(private readonly shortenerService: ShortenerService) {}
 
