@@ -8,7 +8,11 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     dotenv.config();
     app.enableCors({
-        origin: ['http://localhost:3000'],
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:5173',
+            'https://linkbud.vercel.app',
+        ],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         exposedHeaders: ['set-cookie'],
